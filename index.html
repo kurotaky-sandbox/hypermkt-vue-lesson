@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{ message }}
+    <input type="text" v-model="message">
+    <ul>
+      <li v-for="item in items">
+        {{item.title}}
+        {{item.description}}
+      </li>
+    </ul>
+    <button v-on:click="push()">絶対に押すなよ！</button>
+    <p v-if="isHandRaised">どうぞどうぞ</p>
+    <p v-else>お前やらないの？じゃあ俺やるよ<br>
+    いやここはオレがやるよ！<br>
+    <button v-on:click="raiseHand">・・・・・・じゃあオレがやるよ。</button>
+    </p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+/*      data: {
+        message: 'Hello!!!!!!!!!!',
+        items: [
+          {title: 'PHP', description: 'aaaa'},
+          {title: 'Go!'},
+          {title: 'Rust'},
+          {title: 'C'}
+        ]
+      }
+*/
+      data: {
+        isHandRaised: false
+      },
+      created: function () {
+        setTimeout(function () {
+          alert("押せよ！");
+        }, 5000);
+      },
+      methods: {
+        raiseHand: function () {
+          this.isHandRaised = true;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
